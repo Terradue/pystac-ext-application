@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://terradue.github.io/pystac-ext-application/reference/api/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Python API - Application PySTAC extension</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Python API";
+        var mkdocs_page_input_path = "reference/api.md";
+        var mkdocs_page_url = "/pystac-ext-application/reference/api/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Application PySTAC extension
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/first-steps/">First steps</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/install/">Install</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/use-extension/">Work with Application metadata</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fields/">Application fields</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Python API</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pystac.extensions.application">application</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.application.SCHEMA_URI">SCHEMA_URI</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.application.FIELD_NAMES">FIELD_NAMES</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.application.FIELD_TARGETS">FIELD_TARGETS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.application.TARGETS">TARGETS</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension">ApplicationExtension</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.assetTemplates">assetTemplates</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.container">container</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.entrypoint">entrypoint</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.languages">languages</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.linkTemplates">linkTemplates</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.__init__">__init__</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.apply">apply</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.clear">clear</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.ext">ext</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.get_schema_uri">get_schema_uri</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.has_extension">has_extension</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.set_null">set_null</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.ApplicationExtension.summaries">summaries</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.application.SummariesApplicationExtension">SummariesApplicationExtension</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pystac.extensions.application.AssetTemplate">AssetTemplate</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.AssetTemplate.container">container</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.AssetTemplate.entrypoint">entrypoint</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.AssetTemplate.languages">languages</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.AssetTemplate.apply">apply</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pystac.extensions.application.AssetTemplate.create">create</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Explanation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/architecture/">Architecture</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Application PySTAC extension</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Reference</li>
+      <li class="breadcrumb-item active">Python API</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Terradue/pystac-ext-application/edit/main/docs/reference/api.md">Edit on pystac-ext-application</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Terradue
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<h1 id="python-api">Python API<a class="headerlink" href="#python-api" title="Permanent link">&para;</a></h1>
+<p>Import the extension from <code>pystac.extensions.application</code>. Use <code>ApplicationExtension.ext()</code> for Items, Catalogs, Collections, Assets, item asset definitions, and Links. Use <code>ApplicationExtension.summaries()</code> for Collection summaries and <code>AssetTemplate</code> for nested template values.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<h2 id="pystac.extensions.application" class="doc doc-heading">
+            <code>pystac.extensions.application</code>
+
+
+<a href="#pystac.extensions.application" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents first">
+
+        <p>Generated PySTAC extension. Edit the source schema and regenerate to update.</p>
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="pystac.extensions.application.SCHEMA_URI" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">SCHEMA_URI</span> <span class="o">=</span> <span class="s1">'https://stac-extensions.github.io/application/v0.1.0/schema.json'</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.SCHEMA_URI" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="pystac.extensions.application.FIELD_NAMES" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">FIELD_NAMES</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'container'</span><span class="p">:</span> <span class="s1">'application:container'</span><span class="p">,</span> <span class="s1">'entrypoint'</span><span class="p">:</span> <span class="s1">'application:entrypoint'</span><span class="p">,</span> <span class="s1">'languages'</span><span class="p">:</span> <span class="s1">'application:languages'</span><span class="p">,</span> <span class="s1">'assetTemplates'</span><span class="p">:</span> <span class="s1">'assetTemplates'</span><span class="p">,</span> <span class="s1">'linkTemplates'</span><span class="p">:</span> <span class="s1">'linkTemplates'</span><span class="p">}</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.FIELD_NAMES" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="pystac.extensions.application.FIELD_TARGETS" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">FIELD_TARGETS</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'application:container'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'asset'</span><span class="p">,</span> <span class="s1">'catalog'</span><span class="p">,</span> <span class="s1">'collection'</span><span class="p">,</span> <span class="s1">'item'</span><span class="p">,</span> <span class="s1">'item_asset'</span><span class="p">,</span> <span class="s1">'link'</span><span class="p">,</span> <span class="s1">'summary'</span><span class="p">],</span> <span class="s1">'application:entrypoint'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'asset'</span><span class="p">,</span> <span class="s1">'catalog'</span><span class="p">,</span> <span class="s1">'collection'</span><span class="p">,</span> <span class="s1">'item'</span><span class="p">,</span> <span class="s1">'item_asset'</span><span class="p">,</span> <span class="s1">'link'</span><span class="p">,</span> <span class="s1">'summary'</span><span class="p">],</span> <span class="s1">'application:languages'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'asset'</span><span class="p">,</span> <span class="s1">'catalog'</span><span class="p">,</span> <span class="s1">'collection'</span><span class="p">,</span> <span class="s1">'item'</span><span class="p">,</span> <span class="s1">'item_asset'</span><span class="p">,</span> <span class="s1">'link'</span><span class="p">,</span> <span class="s1">'summary'</span><span class="p">],</span> <span class="s1">'assetTemplates'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'catalog'</span><span class="p">,</span> <span class="s1">'collection'</span><span class="p">],</span> <span class="s1">'linkTemplates'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'catalog'</span><span class="p">,</span> <span class="s1">'collection'</span><span class="p">]}</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.FIELD_TARGETS" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="pystac.extensions.application.TARGETS" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">TARGETS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'asset'</span><span class="p">,</span> <span class="s1">'catalog'</span><span class="p">,</span> <span class="s1">'collection'</span><span class="p">,</span> <span class="s1">'item'</span><span class="p">,</span> <span class="s1">'item_asset'</span><span class="p">,</span> <span class="s1">'link'</span><span class="p">,</span> <span class="s1">'summary'</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.TARGETS" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+    </div>
+
+</div>
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.application.ApplicationExtension" class="doc doc-heading">
+            <code>ApplicationExtension</code>
+
+
+<a href="#pystac.extensions.application.ApplicationExtension" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pystac.extensions.base.PropertiesExtension">PropertiesExtension</span></code>, <code><span title="pystac.extensions.base.ExtensionManagementMixin">ExtensionManagementMixin</span>[<span title="pystac.Item">Item</span> | <span title="pystac.Collection">Collection</span> | <span title="pystac.Catalog">Catalog</span>]</code>, <code><span title="typing.Generic">Generic</span>[<span title="pystac.extensions.application.T">T</span>]</code></p>
+
+
+
+        <p>Typed property wrapper; use ext() to check/register the extension.</p>
+<p>Setters preserve JSON representations, including date/time strings and nested
+dictionaries. None removes a property; set_null() explicitly writes JSON null.
+Validate the owning STAC object to enforce full schema constraints.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ApplicationExtension</span><span class="p">(</span>
+    <span class="n">PropertiesExtension</span><span class="p">,</span>
+    <span class="n">ExtensionManagementMixin</span><span class="p">[</span><span class="n">pystac</span><span class="o">.</span><span class="n">Item</span> <span class="o">|</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span> <span class="o">|</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Catalog</span><span class="p">],</span>
+    <span class="n">Generic</span><span class="p">[</span><span class="n">T</span><span class="p">],</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Typed property wrapper; use ext() to check/register the extension.</span>
+
+<span class="sd">    Setters preserve JSON representations, including date/time strings and nested</span>
+<span class="sd">    dictionaries. None removes a property; set_null() explicitly writes JSON null.</span>
+<span class="sd">    Validate the owning STAC object to enforce full schema constraints.</span>
+<span class="sd">    """</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Bind a schema-supported STAC object's metadata for live updates."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">:</span> <span class="n">T</span> <span class="o">=</span> <span class="n">obj</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_target</span> <span class="o">=</span> <span class="n">target</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">additional_read_properties</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">ItemAssetDefinition</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">properties</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">extra_fields</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Asset</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">owner</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">additional_read_properties</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">properties</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_schema_uri</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""The canonical schema identifier used for extension registration."""</span>
+        <span class="k">return</span> <span class="n">SCHEMA_URI</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_extension</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">STACObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Check this exact schema version; migrations are not generated."""</span>
+        <span class="k">return</span> <span class="n">SCHEMA_URI</span> <span class="ow">in</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">stac_extensions</span> <span class="ow">or</span> <span class="p">[])</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ext</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationExtension</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">"""Wrap a schema-supported object and optionally register its extension."""</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">_target_for</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="n">pystac</span><span class="o">.</span><span class="n">Asset</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">ItemAssetDefinition</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Link</span><span class="p">)):</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_owner_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">FIELD_TARGETS</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="n">pystac</span><span class="o">.</span><span class="n">ExtensionTypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> does not apply to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_target</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Remove a field using its generated Python attribute name."""</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">FIELD_NAMES</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_null</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Write explicit JSON null; schema validation checks whether it is permitted."""</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="n">FIELD_NAMES</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">pop_if_none</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">values</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Update only supplied fields; omitted fields are preserved.</span>
+
+<span class="sd">        Keys are generated Python attribute names. Unknown or inapplicable fields</span>
+<span class="sd">        are rejected before mutation. Validate the STAC object to check values afterwards.</span>
+<span class="sd">        """</span>
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">FIELD_NAMES</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown extension field: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="n">FIELD_NAMES</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="s2">"application:container"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="s2">"application:container"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">"application:container"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">"application:container"</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_property</span><span class="p">(</span><span class="s2">"application:container"</span><span class="p">,</span> <span class="nb">object</span><span class="p">))</span>
+
+    <span class="nd">@container</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="s2">"application:container"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s2">"application:container"</span><span class="p">,</span> <span class="n">_encode</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entrypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="s2">"application:entrypoint"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="s2">"application:entrypoint"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">"application:entrypoint"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">"application:entrypoint"</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_property</span><span class="p">(</span><span class="s2">"application:entrypoint"</span><span class="p">,</span> <span class="nb">object</span><span class="p">))</span>
+
+    <span class="nd">@entrypoint</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entrypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="s2">"application:entrypoint"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s2">"application:entrypoint"</span><span class="p">,</span> <span class="n">_encode</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">languages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="s2">"application:languages"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="s2">"application:languages"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">"application:languages"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"list[str] | None"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">"application:languages"</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"list[str] | None"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_property</span><span class="p">(</span><span class="s2">"application:languages"</span><span class="p">,</span> <span class="nb">object</span><span class="p">))</span>
+
+    <span class="nd">@languages</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">languages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="s2">"application:languages"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s2">"application:languages"</span><span class="p">,</span> <span class="n">_encode</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">assetTemplates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">AssetTemplate</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="s2">"assetTemplates"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="s2">"assetTemplates"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">"assetTemplates"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span>
+                <span class="s2">"dict[str, AssetTemplate] | None"</span><span class="p">,</span>
+                <span class="n">_decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">"assetTemplates"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"map"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"object"</span><span class="p">,</span> <span class="s2">"AssetTemplate"</span><span class="p">]]),</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span>
+            <span class="s2">"dict[str, AssetTemplate] | None"</span><span class="p">,</span>
+            <span class="n">_decode</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_property</span><span class="p">(</span><span class="s2">"assetTemplates"</span><span class="p">,</span> <span class="nb">object</span><span class="p">),</span> <span class="p">[</span><span class="s2">"map"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"object"</span><span class="p">,</span> <span class="s2">"AssetTemplate"</span><span class="p">]]</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="nd">@assetTemplates</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">assetTemplates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">AssetTemplate</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="s2">"assetTemplates"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s2">"assetTemplates"</span><span class="p">,</span> <span class="n">_encode</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">linkTemplates</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">AssetTemplate</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="s2">"linkTemplates"</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="s2">"linkTemplates"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s2">"linkTemplates"</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">cast</span><span class="p">(</span>
+                <span class="s2">"list[AssetTemplate] | None"</span><span class="p">,</span>
+                <span class="n">_decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">"linkTemplates"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"list"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"object"</span><span class="p">,</span> <span class="s2">"AssetTemplate"</span><span class="p">]]),</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span>
+            <span class="s2">"list[AssetTemplate] | None"</span><span class="p">,</span>
+            <span class="n">_decode</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_get_property</span><span class="p">(</span><span class="s2">"linkTemplates"</span><span class="p">,</span> <span class="nb">object</span><span class="p">),</span> <span class="p">[</span><span class="s2">"list"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"object"</span><span class="p">,</span> <span class="s2">"AssetTemplate"</span><span class="p">]]</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="nd">@linkTemplates</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">linkTemplates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AssetTemplate</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="s2">"linkTemplates"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s2">"linkTemplates"</span><span class="p">,</span> <span class="n">_encode</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">summaries</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SummariesApplicationExtension</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Wrap schema-declared Collection summaries and optionally register the extension."""</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">pystac</span><span class="o">.</span><span class="n">ExtensionTypeError</span><span class="p">(</span><span class="s2">"Summaries require a Collection"</span><span class="p">)</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">SummariesApplicationExtension</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.assetTemplates" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">assetTemplates</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">AssetTemplate</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.ApplicationExtension.assetTemplates" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>assetTemplates</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.container" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">container</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.ApplicationExtension.container" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>application:container</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.entrypoint" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">entrypoint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.ApplicationExtension.entrypoint" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>application:entrypoint</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.languages" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">languages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.ApplicationExtension.languages" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>application:languages</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.linkTemplates" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">linkTemplates</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AssetTemplate</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.ApplicationExtension.linkTemplates" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>linkTemplates</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.__init__" class="doc doc-heading">
+            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+
+<a href="#pystac.extensions.application.ApplicationExtension.__init__" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Bind a schema-supported STAC object's metadata for live updates.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Bind a schema-supported STAC object's metadata for live updates."""</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="p">:</span> <span class="n">T</span> <span class="o">=</span> <span class="n">obj</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_target</span> <span class="o">=</span> <span class="n">target</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">additional_read_properties</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">ItemAssetDefinition</span><span class="p">)):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">properties</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">extra_fields</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Asset</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">owner</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">additional_read_properties</span> <span class="o">=</span> <span class="p">[</span><span class="n">obj</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">properties</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.apply" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">apply</span><span class="p">(</span><span class="o">**</span><span class="n">values</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+
+<a href="#pystac.extensions.application.ApplicationExtension.apply" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Update only supplied fields; omitted fields are preserved.</p>
+<p>Keys are generated Python attribute names. Unknown or inapplicable fields
+are rejected before mutation. Validate the STAC object to check values afterwards.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">values</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Update only supplied fields; omitted fields are preserved.</span>
+
+<span class="sd">    Keys are generated Python attribute names. Unknown or inapplicable fields</span>
+<span class="sd">    are rejected before mutation. Validate the STAC object to check values afterwards.</span>
+<span class="sd">    """</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">FIELD_NAMES</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unknown extension field: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="n">FIELD_NAMES</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.clear" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">clear</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+
+<a href="#pystac.extensions.application.ApplicationExtension.clear" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Remove a field using its generated Python attribute name.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Remove a field using its generated Python attribute name."""</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">FIELD_NAMES</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.ext" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">ext</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationExtension</span><span class="p">[</span><span class="n">T</span><span class="p">]</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.ApplicationExtension.ext" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Wrap a schema-supported object and optionally register its extension.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ext</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApplicationExtension</span><span class="p">[</span><span class="n">T</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">"""Wrap a schema-supported object and optionally register its extension."""</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">_target_for</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="n">pystac</span><span class="o">.</span><span class="n">Asset</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">ItemAssetDefinition</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Link</span><span class="p">)):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_owner_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.get_schema_uri" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">get_schema_uri</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.ApplicationExtension.get_schema_uri" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>The canonical schema identifier used for extension registration.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_schema_uri</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""The canonical schema identifier used for extension registration."""</span>
+    <span class="k">return</span> <span class="n">SCHEMA_URI</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.has_extension" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">STACObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.ApplicationExtension.has_extension" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Check this exact schema version; migrations are not generated.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">has_extension</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">STACObject</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Check this exact schema version; migrations are not generated."""</span>
+    <span class="k">return</span> <span class="n">SCHEMA_URI</span> <span class="ow">in</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">stac_extensions</span> <span class="ow">or</span> <span class="p">[])</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.set_null" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">set_null</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+
+<a href="#pystac.extensions.application.ApplicationExtension.set_null" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Write explicit JSON null; schema validation checks whether it is permitted.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_null</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Write explicit JSON null; schema validation checks whether it is permitted."""</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">FIELD_NAMES</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_check_field</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">pop_if_none</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.application.ApplicationExtension.summaries" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">summaries</span><span class="p">(</span><span class="n">obj</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SummariesApplicationExtension</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.ApplicationExtension.summaries" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Wrap schema-declared Collection summaries and optionally register the extension.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">summaries</span><span class="p">(</span>
+    <span class="bp">cls</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SummariesApplicationExtension</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Wrap schema-declared Collection summaries and optionally register the extension."""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pystac</span><span class="o">.</span><span class="n">Collection</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="n">pystac</span><span class="o">.</span><span class="n">ExtensionTypeError</span><span class="p">(</span><span class="s2">"Summaries require a Collection"</span><span class="p">)</span>
+    <span class="bp">cls</span><span class="o">.</span><span class="n">ensure_has_extension</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">add_if_missing</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SummariesApplicationExtension</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.application.SummariesApplicationExtension" class="doc doc-heading">
+            <code>SummariesApplicationExtension</code>
+
+
+<a href="#pystac.extensions.application.SummariesApplicationExtension" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pystac.extensions.base.SummariesExtension">SummariesExtension</span></code></p>
+
+
+
+        <p>Collection summaries; ranges, lists and JSON Schema objects are preserved.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SummariesApplicationExtension</span><span class="p">(</span><span class="n">SummariesExtension</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Collection summaries; ranges, lists and JSON Schema objects are preserved."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">pystac</span><span class="o">.</span><span class="n">RangeSummary</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">summaries</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"application:container"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"minimum"</span> <span class="ow">in</span> <span class="n">value</span> <span class="ow">and</span> <span class="s2">"maximum"</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">summaries</span><span class="o">.</span><span class="n">get_range</span><span class="p">(</span><span class="s2">"application:container"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="nd">@container</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">pystac</span><span class="o">.</span><span class="n">RangeSummary</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">summaries</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"application:container"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_summary</span><span class="p">(</span><span class="s2">"application:container"</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entrypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">pystac</span><span class="o">.</span><span class="n">RangeSummary</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">summaries</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"application:entrypoint"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"minimum"</span> <span class="ow">in</span> <span class="n">value</span> <span class="ow">and</span> <span class="s2">"maximum"</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">summaries</span><span class="o">.</span><span class="n">get_range</span><span class="p">(</span><span class="s2">"application:entrypoint"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="nd">@entrypoint</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entrypoint</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">pystac</span><span class="o">.</span><span class="n">RangeSummary</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">summaries</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"application:entrypoint"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_summary</span><span class="p">(</span><span class="s2">"application:entrypoint"</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">languages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">pystac</span><span class="o">.</span><span class="n">RangeSummary</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">summaries</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"application:languages"</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">"minimum"</span> <span class="ow">in</span> <span class="n">value</span> <span class="ow">and</span> <span class="s2">"maximum"</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">summaries</span><span class="o">.</span><span class="n">get_range</span><span class="p">(</span><span class="s2">"application:languages"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="nd">@languages</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">languages</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">pystac</span><span class="o">.</span><span class="n">RangeSummary</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">summaries</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"application:languages"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_summary</span><span class="p">(</span><span class="s2">"application:languages"</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="pystac.extensions.application.AssetTemplate" class="doc doc-heading">
+            <code>AssetTemplate</code>
+
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-dataclass"><code>dataclass</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.AssetTemplate" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="pystac.extensions.application._Object">_Object</span></code></p>
+
+
+
+        <p>Generated nested value object; unknown JSON members are preserved.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AssetTemplate</span><span class="p">(</span><span class="n">_Object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Generated nested value object; unknown JSON members are preserved."""</span>
+
+    <span class="n">_members</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"container"</span><span class="p">:</span> <span class="s2">"application:container"</span><span class="p">,</span>
+        <span class="s2">"entrypoint"</span><span class="p">:</span> <span class="s2">"application:entrypoint"</span><span class="p">,</span>
+        <span class="s2">"languages"</span><span class="p">:</span> <span class="s2">"application:languages"</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">container</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+        <span class="n">entrypoint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+        <span class="n">languages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AssetTemplate</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Create with typed members; omitted optionals are not written.</span>
+
+<span class="sd">        Explicit None writes null. Validate the STAC object to check value constraints.</span>
+<span class="sd">        """</span>
+        <span class="n">_values</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">"application:container"</span><span class="p">:</span> <span class="n">container</span><span class="p">,</span>
+            <span class="s2">"application:entrypoint"</span><span class="p">:</span> <span class="n">entrypoint</span><span class="p">,</span>
+            <span class="s2">"application:languages"</span><span class="p">:</span> <span class="n">languages</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">_encode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">_values</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_Unset</span><span class="p">)}</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">container</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+        <span class="n">entrypoint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+        <span class="n">languages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Update supplied members; omitted values are preserved and None removes."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_apply</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">"container"</span><span class="p">:</span> <span class="n">container</span><span class="p">,</span>
+                <span class="s2">"entrypoint"</span><span class="p">:</span> <span class="n">entrypoint</span><span class="p">,</span>
+                <span class="s2">"languages"</span><span class="p">:</span> <span class="n">languages</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="s2">"application:container"</span>
+        <span class="c1"># Schema-derived typing at the unvalidated PySTAC JSON boundary.</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"application:container"</span><span class="p">))</span>
+
+    <span class="nd">@container</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"application:container"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">"application:container"</span><span class="p">]</span> <span class="o">=</span> <span class="n">_encode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entrypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="s2">"application:entrypoint"</span>
+        <span class="c1"># Schema-derived typing at the unvalidated PySTAC JSON boundary.</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"str | None"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"application:entrypoint"</span><span class="p">))</span>
+
+    <span class="nd">@entrypoint</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">entrypoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"application:entrypoint"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">"application:entrypoint"</span><span class="p">]</span> <span class="o">=</span> <span class="n">_encode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">languages</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="s2">"application:languages"</span>
+        <span class="c1"># Schema-derived typing at the unvalidated PySTAC JSON boundary.</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">"list[str] | None"</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"application:languages"</span><span class="p">))</span>
+
+    <span class="nd">@languages</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">languages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">"application:languages"</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="s2">"application:languages"</span><span class="p">]</span> <span class="o">=</span> <span class="n">_encode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="pystac.extensions.application.AssetTemplate.container" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">container</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.AssetTemplate.container" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>application:container</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="pystac.extensions.application.AssetTemplate.entrypoint" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">entrypoint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.AssetTemplate.entrypoint" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>application:entrypoint</p>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h4 id="pystac.extensions.application.AssetTemplate.languages" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">languages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-writable"><code>writable</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.AssetTemplate.languages" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>application:languages</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.application.AssetTemplate.apply" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">apply</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">container</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span> <span class="n">entrypoint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span> <span class="n">languages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+
+<a href="#pystac.extensions.application.AssetTemplate.apply" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Update supplied members; omitted values are preserved and None removes.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">apply</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">container</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+    <span class="n">entrypoint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+    <span class="n">languages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Update supplied members; omitted values are preserved and None removes."""</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_apply</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">"container"</span><span class="p">:</span> <span class="n">container</span><span class="p">,</span>
+            <span class="s2">"entrypoint"</span><span class="p">:</span> <span class="n">entrypoint</span><span class="p">,</span>
+            <span class="s2">"languages"</span><span class="p">:</span> <span class="n">languages</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="pystac.extensions.application.AssetTemplate.create" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">create</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">container</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span> <span class="n">entrypoint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span> <span class="n">languages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AssetTemplate</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#pystac.extensions.application.AssetTemplate.create" class="headerlink" title="Permanent link">&para;</a></h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Create with typed members; omitted optionals are not written.</p>
+<p>Explicit None writes null. Validate the STAC object to check value constraints.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>pystac/extensions/application.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create</span><span class="p">(</span>
+    <span class="bp">cls</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">container</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+    <span class="n">entrypoint</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+    <span class="n">languages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">_Unset</span> <span class="o">=</span> <span class="n">_UNSET</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AssetTemplate</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Create with typed members; omitted optionals are not written.</span>
+
+<span class="sd">    Explicit None writes null. Validate the STAC object to check value constraints.</span>
+<span class="sd">    """</span>
+    <span class="n">_values</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"application:container"</span><span class="p">:</span> <span class="n">container</span><span class="p">,</span>
+        <span class="s2">"application:entrypoint"</span><span class="p">:</span> <span class="n">entrypoint</span><span class="p">,</span>
+        <span class="s2">"application:languages"</span><span class="p">:</span> <span class="n">languages</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+        <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">_encode</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">_values</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">_Unset</span><span class="p">)}</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../fields/" class="btn btn-neutral float-left" title="Application fields"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../explanation/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Terradue/pystac-ext-application" class="fa fa-code-fork" style="color: #fcfcfc"> pystac-ext-application</a>
+        </span>
+    
+    
+      <span><a href="../fields/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../explanation/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

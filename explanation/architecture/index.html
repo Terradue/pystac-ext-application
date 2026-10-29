@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://terradue.github.io/pystac-ext-application/explanation/architecture/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Architecture - Application PySTAC extension</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Architecture";
+        var mkdocs_page_input_path = "explanation/architecture.md";
+        var mkdocs_page_url = "/pystac-ext-application/explanation/architecture/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Application PySTAC extension
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../tutorials/first-steps/">First steps</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">How-to guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/install/">Install</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../how-to/use-extension/">Work with Application metadata</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/fields/">Application fields</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/api/">Python API</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Explanation</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Architecture</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#package-structure">Package structure</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nested-template-values">Nested template values</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#collection-summaries">Collection summaries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#validation-boundaries">Validation boundaries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#schema-registration-and-versions">Schema registration and versions</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Application PySTAC extension</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Explanation</li>
+      <li class="breadcrumb-item active">Architecture</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Terradue/pystac-ext-application/edit/main/docs/explanation/architecture.md">Edit on pystac-ext-application</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <!--
+Copyright 2026 Terradue
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<h1 id="scope-architecture-and-validation">Scope, architecture, and validation<a class="headerlink" href="#scope-architecture-and-validation" title="Permanent link">&para;</a></h1>
+<h2 id="package-structure">Package structure<a class="headerlink" href="#package-structure" title="Permanent link">&para;</a></h2>
+<p>The distribution is named <code>pystac-ext-application</code>, while the import path is <code>pystac.extensions.application</code>. The wheel excludes the shared <code>pystac.extensions</code> initializer owned by PySTAC.</p>
+<p><code>ApplicationExtension.ext()</code> returns a wrapper bound to an Item, Catalog, Collection, Asset, ItemAssetDefinition, or Link. The wrapper writes directly into the object's metadata dictionary, so serialization uses PySTAC's normal <code>to_dict()</code> method. The package stores application metadata; it does not run containers or workflows.</p>
+<p>Asset, item asset definition, and Link registration is managed through the owner. Item-owned Assets inherit missing Application fields from Item properties; explicit null masks inherited values. Collection-owned Assets do not inherit Collection fields.</p>
+<h2 id="nested-template-values">Nested template values<a class="headerlink" href="#nested-template-values" title="Permanent link">&para;</a></h2>
+<p>Catalogs and Collections expose <code>assetTemplates</code> as a map and <code>linkTemplates</code> as a list. Both contain <code>AssetTemplate</code> wrappers. Setters encode wrappers into plain JSON containers. Getters wrap the stored nested dictionaries by reference, so editing a retrieved template changes the owning STAC object's serialized metadata.</p>
+<p><code>AssetTemplate.from_dict()</code> also wraps by reference unless <code>copy=True</code> is requested. Unknown JSON members survive wrapping. The module is generated: changes to schema-defined fields belong in the source schema and generation workflow.</p>
+<h2 id="collection-summaries">Collection summaries<a class="headerlink" href="#collection-summaries" title="Permanent link">&para;</a></h2>
+<p>Collections support both direct metadata through <code>ext()</code> and summaries through <code>summaries()</code>. The summary helper exposes container, entrypoint, and languages. It preserves complete lists, ranges, and JSON Schema dictionaries and replaces the previous representation when a summary is assigned. It does not compute summaries from Items.</p>
+<h2 id="validation-boundaries">Validation boundaries<a class="headerlink" href="#validation-boundaries" title="Permanent link">&para;</a></h2>
+<p>Type annotations describe expected values but do not enforce every constraint at runtime. Field access checks target applicability, and template decoding checks the shapes of maps, lists, and nested objects. Reading or writing metadata does not perform full JSON Schema validation.</p>
+<p><code>apply()</code> checks all supplied field names and their applicability before changing metadata. Omitted fields are preserved; <code>None</code> removes a field. This preflight check does not validate all supplied values or guarantee rollback for arbitrary setter failures. <code>set_null()</code> stores explicit JSON null without checking whether the schema permits it.</p>
+<p>For full STAC and extension validation, install PySTAC's validation extra with <code>python -m pip install "pystac[validation]"</code> and call <code>item.validate()</code> or validate the owning STAC object. Validation may retrieve remote schemas, so the referenced schema URLs must be accessible or supplied through an application-configured validator. Neither <code>apply()</code> nor <code>to_dict()</code> performs JSON Schema validation.</p>
+<p>The <a href="../../reference/fields/">field reference</a> describes supported properties and summaries.</p>
+<h2 id="schema-registration-and-versions">Schema registration and versions<a class="headerlink" href="#schema-registration-and-versions" title="Permanent link">&para;</a></h2>
+<p><code>SCHEMA_URI</code> identifies Application v0.1.0. <code>has_extension()</code> checks for this exact URI. <code>ext()</code> requires registration unless <code>add_if_missing=True</code> is supplied; for owned objects, registration is checked or added on the owner. Adding the current URI does not migrate older metadata. The module does not expose migration hooks.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Terradue/pystac-ext-application" class="fa fa-code-fork" style="color: #fcfcfc"> pystac-ext-application</a>
+        </span>
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
