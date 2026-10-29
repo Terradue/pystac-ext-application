@@ -12,6 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Package metadata for Earthquake pystac extension."""
+"""Package metadata for Application pystac extension."""
 
-__version__ = "1.0.0"
+__version__ = "0.1.0"
